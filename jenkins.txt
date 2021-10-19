@@ -1,1 +1,40 @@
+pipeline {
+    agent any       
+    
+    environment {
+        PROJECT_NAME = "DIMAKO1"
+        OWNER_NAME = "DIMA SELEZNEV"
+    }
 
+    stages {
+        stage('1-Build') {
+            steps {
+                echo "start of stage build"
+                echo "Building"
+                echo "end of stage build"
+            }
+        }
+        stage ('2-test') {
+            steps {
+                echo "Start of stage build"
+                echo "testing...."
+                sh "ls -la"
+                echo "Hello ${OWNER_NAME}"
+                echo "Project name is ${PROJECT_NAME}"
+                echo "end of stag build"
+            }
+        }
+        stage ('3-deploy') {
+            steps {
+                echo "Start of stage deploy"
+                echo "deploying...."
+                sh '''
+                    echo "line1"
+                    echo "line2"
+                    echo "line3"
+                '''
+                echo "end of stage build"
+            }
+        }    
+    }
+}
